@@ -11,7 +11,7 @@ const ArticleTile = ({
 }) => {
   return (
     <div>
-      <li>
+      <li className="li_articles_list">
         <p>Title: {title}</p>
         <p>Author: {author}</p>
         <p>Topic: {topic}</p>

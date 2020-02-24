@@ -4,7 +4,7 @@ import Header from "./Components/Header";
 import Home from "./Components/Home";
 import Nav from "./Components/Nav";
 import Articles from "./Components/Articles";
-
+import ArticleById from "./Components/ArticleById";
 import { Router } from "@reach/router";
 class App extends Component {
   render() {
@@ -15,6 +15,7 @@ class App extends Component {
         <Router>
           <Home path="/" />
           <Articles path="/articles" />
+          <ArticleById path="articles/:article_id" />
         </Router>
       </main>
     );
