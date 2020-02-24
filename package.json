@@ -1,0 +1,20 @@
+{
+  "name": "fe-nc-news",
+  "version": "1.0.0",
+  "description": "> ALERT! Please **create your own empty repo** for NC News to avoid later issues with deploying and git histories. You should then use `create-react-app` and set the git remote using `git remote set-url origin your.new.git.url/here`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northcoders/fe-nc-news.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northcoders/fe-nc-news/issues"
+  },
+  "homepage": "https://github.com/northcoders/fe-nc-news#readme"
+}
