@@ -1,11 +1,24 @@
-main {
+/* main {
   border: 40%;
   border-radius: 20%;
   border-color: black;
+} */
+
+.articleTile {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.li_articles_list {
-  border: 40%;
-  border-color: black;
-  border-radius: 20%;
+.li_article_list {
+  border: black;
+  border-radius: 10%;
+  margin: 20px auto;
+  background-color: grey;
+  width: 350px;
+  height: 350px;
+  justify-content: center;
+  list-style: none;
 }

@@ -9,9 +9,7 @@ export const FetchArticles = () => {
 };
 
 export const FetchArticleById = article_id => {
-  console.log(article_id);
   return axios.get(baseConfig + `/articles/${article_id}`).then(res => {
-    console.log(res.data.article);
     return res.data.article;
   });
 };
