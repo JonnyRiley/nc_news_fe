@@ -4,7 +4,7 @@ import React from "react";
 function IsLoading() {
   return (
     <div>
-      <div class="loader">
+      <div className="loader">
         <span>L</span>
         <span>O</span>
         <span>A</span>
@@ -13,7 +13,7 @@ function IsLoading() {
         <span>N</span>
         <span>G</span>
 
-        <div class="covers">
+        <div className="covers">
           <span></span>
           <span></span>
           <span></span>

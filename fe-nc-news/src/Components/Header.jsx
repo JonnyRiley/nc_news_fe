@@ -1,6 +1,10 @@
 import React from "react";
 const Header = () => {
-  return <h1>Nc-News</h1>;
+  return (
+    <header>
+      <h1>Nc-News</h1>
+    </header>
+  );
 };
 
 export default Header;

@@ -10,9 +10,6 @@ const Nav = () => {
       <Link to="/articles">
         <button>Articles</button>
       </Link>
-      <Link to="/comments">
-        <button>Comments</button>
-      </Link>
       <Link to="/topics">
         <button>Topics</button>
       </Link>
