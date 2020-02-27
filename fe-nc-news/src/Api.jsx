@@ -29,7 +29,7 @@ export const FetchCommentsByArticleId = article_id => {
   });
 };
 
-export const FetchTopics = filterTopicsBy => {
+export const FetchTopics = () => {
   return axios.get(baseURL + `/topics`).then(res => {
     console.log(res, "FETCHING");
     return res.data.topics;
@@ -44,4 +44,11 @@ export const postAnItem = (article_id, requestBody) => {
       console.log(data, "last");
       return data.comment;
     });
+};
+
+export const patchVotes = (inc_votes, comment_Id) => {
+  console.log(inc_votes, comment_Id, "handlingRequest");
+  return axios.patch(baseURL + `/comments/${comment_Id}`, {
+    inc_votes: inc_votes
+  });
 };

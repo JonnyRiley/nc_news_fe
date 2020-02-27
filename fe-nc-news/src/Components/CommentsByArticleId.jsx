@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
 import ItemAdder from "./ItemAdder";
+import VoteAdder from "./VoteAdder";
 
 class CommentsByArticleId extends Component {
   state = {
@@ -13,6 +14,7 @@ class CommentsByArticleId extends Component {
   render() {
     if (this.state.isLoading) return IsLoading();
     const { comments } = this.state;
+    console.log(comments, "HEREEE");
     return (
       <div>
         <h1>Comments</h1>
@@ -32,9 +34,12 @@ class CommentsByArticleId extends Component {
               <h2> {comment.author} comment about this article</h2>
               <li>
                 <p>{comment.body}</p>
-                <p>Comments: {comment.votes}</p>
                 <p>Published at: {comment.created_at}</p>
               </li>
+              <VoteAdder
+                comment_id={comment.comment_id}
+                votes={comment.votes}
+              />
             </main>
           );
         })}
@@ -53,9 +58,12 @@ class CommentsByArticleId extends Component {
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    const { article_id } = this.props;
-    if (article_id !== prevProps.article_id)
+    console.log("cdu");
+
+    const { article_id, votes } = this.props;
+    if (article_id !== prevProps.article_id || votes !== prevProps.votes)
       Api.FetchArticleById(article_id).then(res => {
+        console.log(res, "RESSSS");
         this.setState({ article: res, isLoading: false });
       });
   }

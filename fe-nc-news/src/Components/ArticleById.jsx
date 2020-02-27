@@ -27,6 +27,7 @@ class ArticleById extends Component {
             <p>Comments: {article.comment_count}</p>
           </Link>
         </li>
+
         <Toggle>
           <CommentsByArticleId article_id={article.article_id} {...article} />
         </Toggle>
