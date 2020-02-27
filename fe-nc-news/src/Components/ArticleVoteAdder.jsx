@@ -12,7 +12,7 @@ class VoteAdder extends Component {
     {
       if (err) return ErrorPage(err);
     }
-    const { votes, comment_id } = this.props;
+    const { votes, article_id } = this.props;
 
     return (
       <main>
@@ -24,14 +24,14 @@ class VoteAdder extends Component {
   }
 
   handleClick = inc_votes => {
-    const { comment_id } = this.props;
+    const { article_id } = this.props;
     this.setState(currentState => {
       return {
         voteDifference: currentState.voteDifference + inc_votes
       };
     });
 
-    Api.patchVotes(inc_votes, comment_id).catch(err => {
+    Api.patchArticleVotes(inc_votes, article_id).catch(err => {
       this.setState(currentState => {
         return {
           voteDifference: currentState.voteDifference - inc_votes
@@ -41,29 +41,3 @@ class VoteAdder extends Component {
   };
 }
 export default VoteAdder;
-
-// {err && <ErrorPage err={err}}/>
-
-// }
-
-//, err: {data: {msg:"voting failed"}status: 500
-
-// <p> Votes: {votes}<p>
-// <button onClick={()=>handleClick(0)}>starDown</button>
-
-// {err && <ErrorPage err={err}}/>
-
-// const handleClick({votes}) => {
-// const updateVotes = voteChange => {
-// console.log(voteChange)
-// this.setState(()=> {
-// return {voteDifference: currentState.voteDifference + voteChange}
-// }
-// })
-// api.patchVotes(votesChange, comment_id).catch((err)=> {
-// this.setState(()=> {
-// return {voteDifference: currentState.voteDifference - starChange}
-// }
-// })
-// }
-// }

@@ -3,6 +3,7 @@ import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
 import ItemAdder from "./ItemAdder";
 import VoteAdder from "./VoteAdder";
+import DeleteComment from "./DeleteComment";
 
 class CommentsByArticleId extends Component {
   state = {
@@ -40,6 +41,10 @@ class CommentsByArticleId extends Component {
                 comment_id={comment.comment_id}
                 votes={comment.votes}
               />
+              <DeleteComment
+                removeComment={this.removeComment}
+                comment_id={comment.comment_id}
+              />
             </main>
           );
         })}
@@ -51,6 +56,17 @@ class CommentsByArticleId extends Component {
       return { comments: [newItem, ...state.comments] };
     });
   };
+  removeComment = commentIdToDelete => {
+    console.log("REMOVECOMMEnt");
+    return this.setState(currentState => {
+      return {
+        comments: [...currentState.comments].filter(
+          comment => comment.comment_id !== commentIdToDelete
+        )
+      };
+    });
+  };
+
   componentDidMount() {
     const { article_id } = this.props;
     Api.FetchCommentsByArticleId(article_id).then(res => {
@@ -59,13 +75,34 @@ class CommentsByArticleId extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     console.log("cdu");
-
-    const { article_id, votes } = this.props;
-    if (article_id !== prevProps.article_id || votes !== prevProps.votes)
+    const { comments } = this.state;
+    const { article_id, votes, comment_id } = this.props;
+    if (
+      article_id !== prevProps.article_id ||
+      votes !== prevProps.votes ||
+      comments !== prevState.comments
+    ) {
       Api.FetchArticleById(article_id).then(res => {
         console.log(res, "RESSSS");
         this.setState({ article: res, isLoading: false });
       });
+    }
+    // else if (comments !== prevState.comments) {
+
+    //     this.setState({ isLoading: false, comments: res });
+    //   });
   }
 }
+
+//   componentDidUpdate(prevProps, prevState) {
+//     console.log("cdu");
+
+//     const { article_id, votes } = this.props;
+//     if (article_id !== prevProps.article_id || votes !== prevProps.votes)
+//       Api.FetchArticleById(article_id).then(res => {
+//         console.log(res, "RESSSS");
+//         this.setState({ article: res, isLoading: false });
+//       });
+//   }
+// }
 export default CommentsByArticleId;

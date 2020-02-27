@@ -46,9 +46,21 @@ export const postAnItem = (article_id, requestBody) => {
     });
 };
 
-export const patchVotes = (inc_votes, comment_Id) => {
-  console.log(inc_votes, comment_Id, "handlingRequest");
-  return axios.patch(baseURL + `/comments/${comment_Id}`, {
+export const patchVotes = (inc_votes, comment_id) => {
+  console.log(inc_votes, comment_id, "handlingRequest");
+  return axios.patch(baseURL + `/comments/${comment_id}`, {
     inc_votes: inc_votes
   });
+};
+
+export const patchArticleVotes = (inc_votes, article_id) => {
+  console.log(inc_votes, article_id, "handlingRequest");
+  return axios.patch(baseURL + `/articles/${article_id}`, {
+    inc_votes: inc_votes
+  });
+};
+
+export const deleteCommentById = comment_Id => {
+  console.log(comment_Id, "handlingDELETE");
+  return axios.delete(baseURL + `/comments/${comment_Id}`);
 };

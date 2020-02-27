@@ -36,9 +36,9 @@ div {
   justify-content: center;
   list-style: none;
   color: black;
-  display: grid;
+  /* display: grid;
   grid-template-rows: 100px 50px 50px 50px 50px 50px;
-  grid-template-areas: "one" "two" "three" "four" "five" "six";
+  grid-template-areas: "one" "two" "three" "four" "five" "six"; */
 }
 .li_article_list:hover {
   opacity: 70%;
@@ -138,7 +138,6 @@ a {
 }
 
 .li_article_title {
-  padding-top: 10px;
   grid-area: one;
 }
 
@@ -150,6 +149,7 @@ a {
 }
 
 .li_article_votes {
+  background: teal;
   grid-area: four;
 }
 .li_article_comments {
