@@ -26,6 +26,9 @@ div {
   list-style: none;
   color: black;
 }
+.li_article_list:hover {
+  opacity: 70%;
+}
 a {
   text-decoration: none;
 }
@@ -73,16 +76,67 @@ a {
   border-radius: 10%;
   margin: 20px auto;
   background-color: grey;
-  width: 350px;
-  height: 50px;
+  width: 150px;
+  height: 100px;
   justify-content: center;
   list-style: none;
   color: black;
+  display: flex;
+  flex-direction: column;
 }
 .TopicTile {
   z-index: 0;
-  width: 100%;
   display: block;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.navBar {
+  height: 40px;
+  width: 100px;
+
+  display: flex;
+  flex-direction: row;
+}
+.navArticles {
+  background: black;
+  color: white;
+  height: 40px;
+  width: 70px;
+}
+.navTopics {
+  background: black;
+  color: white;
+  height: 40px;
+  width: 70px;
+}
+.navUser {
+  background: black;
+  color: white;
+  height: 40px;
+  width: 70px;
+}
+.navHome {
+  background: black;
+  color: white;
+  height: 40px;
+  width: 70px;
+}
+
+.li_article_title {
+  padding-top: 20px;
+}
+
+.li_article_topic {
+  padding-top: 15px;
+}
+
+.li_article_votes {
+  padding-top: 15px;
+}
+.li_article_comments {
+  padding-top: 15px;
+}
+.li_article_created_at {
+  padding-top: 15px;
 }

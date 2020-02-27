@@ -12,16 +12,14 @@ const ArticleTile = ({
 }) => {
   return (
     <Link to={`${article_id}`}>
-      <div>
-        <li className="li_article_list">
-          <p>Title: {title}</p>
-          <p>Author: {author}</p>
-          <p>Topic: {topic}</p>
-          <p>Votes: {votes}</p>
-          <p>Comments: {comment_count}</p>
-          <p>Posted at: {created_at}</p>
-        </li>
-      </div>
+      <li className="li_article_list">
+        <h2 className="li_article_title">Title: {title}</h2>
+        <p className="li_article_author">Author: {author}</p>
+        <p className="li_article_topic">Topic: {topic}</p>
+        <p className="li_article_votes">Votes: {votes}</p>
+        <p className="li_article_comments">Comments: {comment_count}</p>
+        <p className="li_article_created_at">Posted at: {created_at}</p>
+      </li>
     </Link>
   );
 };

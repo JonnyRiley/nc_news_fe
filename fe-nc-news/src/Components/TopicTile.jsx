@@ -12,10 +12,11 @@ class TopicTile extends Component {
     console.log(this.props.articles, "TOPICS");
     const { topics } = this.state;
     return (
-      <aside>
+      <aside className="TopicTile">
+        <h1>Topics</h1>
         <main>
           <label htmlFor="sortBy">Select Topic</label>
-          <select onClick={this.props.getEachTopic} className="TopicTile">
+          <select onClick={this.props.getEachTopic}>
             <option value="coding">Coding</option>
             <option value="football">Football</option>
             <option value="cooking">Cooking</option>
@@ -23,7 +24,6 @@ class TopicTile extends Component {
         </main>
         {topics.map(topic => (
           <ul key={topic.slug} className="li_topic_list">
-            <li>{topic.description}</li>
             <li>{topic.slug}</li>
           </ul>
         ))}

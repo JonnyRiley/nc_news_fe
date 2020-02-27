@@ -3,18 +3,18 @@ import { Link } from "@reach/router";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className="navBar">
       <Link to="/">
-        <button>Home</button>
+        <button className="navHome">Home</button>
       </Link>
       <Link to="/articles">
-        <button>Articles</button>
+        <button className="navArticles">Articles</button>
       </Link>
       <Link to="/topics">
-        <button>Topics</button>
+        <button className="navTopics">Topics</button>
       </Link>
       <Link to="/users">
-        <button>Users</button>
+        <button className="navUser">Users</button>
       </Link>
     </nav>
   );

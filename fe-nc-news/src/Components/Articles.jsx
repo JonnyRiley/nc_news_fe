@@ -18,20 +18,21 @@ class Articles extends Component {
     const { articles, sortBy } = this.state;
     return (
       <div>
+        <h1>Articles</h1>
+        <Toggle>
+          <TopicTile getEachTopic={this.getEachTopic} />
+        </Toggle>
         <SortBy
           handleChange={this.handleChange}
           articles={articles}
           sortBy={sortBy}
         />
+
         <main className="articleTile">
           {this.state.articles.map(article => (
             <ArticleTile key={article.article_id} {...article} />
           ))}
         </main>
-        {console.log(this.state)}
-        <Toggle>
-          <TopicTile getEachTopic={this.getEachTopic} />
-        </Toggle>
       </div>
     );
   }
