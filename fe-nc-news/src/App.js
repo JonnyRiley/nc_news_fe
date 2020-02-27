@@ -13,7 +13,7 @@ import TopicTile from "./Components/TopicTile";
 class App extends Component {
   render() {
     return (
-      <main>
+      <main className="mainApp">
         <Header />
         <Nav />
         <Router>

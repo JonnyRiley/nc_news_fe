@@ -3,7 +3,19 @@
   border-radius: 20%;
   border-color: black;
 } */
-
+/* .mainApp {
+  background-image: url("./Components/Dark-Marble-Background-1.jpg");
+  min-height: 1000px;
+} */
+/*  */
+/*root {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 200px auto;
+  grid-template-areas:
+    "topLeft topRight"
+    "bottomLeft bottomRight";
+} */
 div {
   overflow: scroll;
 }
@@ -16,7 +28,6 @@ div {
 }
 
 .li_article_list {
-  border: black;
   border-radius: 10%;
   margin: 20px auto;
   background-color: grey;
@@ -25,6 +36,9 @@ div {
   justify-content: center;
   list-style: none;
   color: black;
+  display: grid;
+  grid-template-rows: 100px 50px 50px 50px 50px 50px;
+  grid-template-areas: "one" "two" "three" "four" "five" "six";
 }
 .li_article_list:hover {
   opacity: 70%;
@@ -50,6 +64,7 @@ a {
   justify-content: center;
   list-style: none;
   color: black;
+  float: center;
 }
 .commentTile {
   z-index: 0;
@@ -71,24 +86,23 @@ a {
   color: black;
 }
 
-.li_topic_list {
-  border: black;
-  border-radius: 10%;
-  margin: 20px auto;
-  background-color: grey;
-  width: 150px;
-  height: 100px;
-  justify-content: center;
-  list-style: none;
-  color: black;
-  display: flex;
-  flex-direction: column;
-}
 .TopicTile {
   z-index: 0;
   display: block;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+.li_topic_list {
+  border: black;
+  border-radius: 10%;
+  margin: 20px auto;
+  background-color: whitesmoke;
+  width: 70px;
+  height: 30px;
+  justify-content: center;
+  list-style: none;
+  color: black;
+  padding-top: 20px;
 }
 
 .navBar {
@@ -124,19 +138,23 @@ a {
 }
 
 .li_article_title {
-  padding-top: 20px;
+  padding-top: 10px;
+  grid-area: one;
 }
 
 .li_article_topic {
-  padding-top: 15px;
+  grid-area: two;
+}
+.li_article_author {
+  grid-area: three;
 }
 
 .li_article_votes {
-  padding-top: 15px;
+  grid-area: four;
 }
 .li_article_comments {
-  padding-top: 15px;
+  grid-area: five;
 }
 .li_article_created_at {
-  padding-top: 15px;
+  grid-area: six;
 }

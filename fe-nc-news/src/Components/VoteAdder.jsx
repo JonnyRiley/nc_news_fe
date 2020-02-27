@@ -19,7 +19,7 @@ class VoteAdder extends Component {
     return (
       <main>
         <button onClick={() => this.handleClick(1)}>VoteUp</button>
-        <p>Votes: {votes}</p>
+        <p>Votes: {votes + this.state.voteDifference}</p>
         <button onClick={() => this.handleClick(-1)}>VoteDown</button>
       </main>
     );
