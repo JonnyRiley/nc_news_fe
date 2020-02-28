@@ -56,7 +56,6 @@ class CommentsByArticleId extends Component {
     });
   };
   removeComment = commentIdToDelete => {
-    console.log("REMOVECOMMEnt");
     return this.setState(currentState => {
       return {
         comments: [...currentState.comments].filter(
@@ -73,12 +72,10 @@ class CommentsByArticleId extends Component {
         this.setState({ comments: res, isLoading: false });
       })
       .catch(err => {
-        console.log(err, "err");
         this.setState({ err });
       });
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log("cdu");
     const { comments } = this.state;
     const { article_id, votes } = this.props;
     if (
@@ -88,30 +85,13 @@ class CommentsByArticleId extends Component {
     ) {
       Api.FetchArticleById(article_id)
         .then(res => {
-          console.log(res, "RESSSS");
           this.setState({ article: res, isLoading: false });
         })
         .catch(err => {
-          console.log(err, "err");
           this.setState({ err });
         });
     }
-    // else if (comments !== prevState.comments) {
-
-    //     this.setState({ isLoading: false, comments: res });
-    //   });
   }
 }
 
-//   componentDidUpdate(prevProps, prevState) {
-//     console.log("cdu");
-
-//     const { article_id, votes } = this.props;
-//     if (article_id !== prevProps.article_id || votes !== prevProps.votes)
-//       Api.FetchArticleById(article_id).then(res => {
-//         console.log(res, "RESSSS");
-//         this.setState({ article: res, isLoading: false });
-//       });
-//   }
-// }
 export default CommentsByArticleId;

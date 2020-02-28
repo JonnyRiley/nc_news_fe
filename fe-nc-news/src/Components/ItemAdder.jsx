@@ -47,7 +47,6 @@ class ItemAdder extends Component {
         this.setState({ err });
       })
       .then(newlyPostedItem => {
-        console.log(newlyPostedItem, "NEWITEM");
         this.props.addItem(newlyPostedItem);
       });
   };

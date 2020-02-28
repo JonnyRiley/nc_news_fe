@@ -42,7 +42,6 @@ class Articles extends Component {
   }
   handleChange = event => {
     const { target } = event;
-    console.log(event.target.value, "EVVENTT");
     return this.setState(currentState => {
       return { sortBy: target.value };
     });
@@ -56,7 +55,6 @@ class Articles extends Component {
   };
 
   componentDidMount() {
-    console.log("mounting");
     Api.FetchArticles()
       .then(res => {
         this.setState({ articles: res, isLoading: false });
@@ -67,16 +65,13 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.props, "Props");
     const { sortBy, filterTopicsBy } = this.state;
-    //console.log(sortBy !== prevState.sortBy, "StateUpdate");
     if (
       sortBy !== prevState.sortBy ||
       filterTopicsBy !== prevState.filterTopicsBy
     )
       Api.FetchArticles(sortBy, filterTopicsBy)
         .then(res => {
-          console.log(res, "HERE");
           return this.setState(currentState => {
             return {
               articles: res,

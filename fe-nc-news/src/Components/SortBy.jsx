@@ -8,7 +8,6 @@ class SortBy extends Component {
   render() {
     if (this.state.isLoading) return IsLoading();
     const { articles } = this.props;
-    console.log(this.props, "in sortBy");
 
     return (
       <main>

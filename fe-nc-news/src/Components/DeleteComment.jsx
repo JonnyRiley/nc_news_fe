@@ -19,7 +19,6 @@ class DeleteComment extends Component {
     const { removeComment } = this.props;
     e.preventDefault();
     const { comment_id } = this.props;
-    console.log(comment_id, "comment_id");
     Api.deleteCommentById(comment_id)
       .then(newlyDeleteComment => {
         removeComment(comment_id);
