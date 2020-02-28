@@ -13,9 +13,6 @@ const Nav = () => {
       <Link to="/users/jessjelly">
         <button className="navUser">Users</button>
       </Link>
-      <Link to="/topics">
-        <button className="navTopics">Topics</button>
-      </Link>
     </nav>
   );
 };
