@@ -17,15 +17,7 @@
     "topLeft topRight"
     "bottomLeft bottomRight";
 } */
-/* @media all and (max-width: 600px) and (min-width: 1600px) {
-  .articleTile {
-    z-index: 0;
-    width: 90%;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-} */
+
 h1 {
   border-color: black;
   border-style: double;
@@ -163,9 +155,9 @@ a {
   border-radius: 10%;
   margin: 20px auto;
   background-color: grey;
-  width: 900px;
-  height: 400px;
-  justify-content: space-around;
+  width: 800px;
+  height: 450px;
+  justify-content: center;
   list-style: none;
   color: black;
   float: center;
@@ -177,7 +169,7 @@ a {
   z-index: 0;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .li_article_Id_topic {
