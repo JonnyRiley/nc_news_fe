@@ -10,6 +10,7 @@ import CommentsByArticleId from "./Components/CommentsByArticleId";
 import SortBy from "./Components/SortBy";
 import TopicTile from "./Components/TopicTile";
 import Users from "./Components/Users";
+import ErrorPage from "./Components/ErrorPage";
 
 class App extends Component {
   state = {
@@ -32,6 +33,7 @@ class App extends Component {
             username={username}
           />
           <Users path="/users/:username" username={username} />
+          <ErrorPage default />
         </Router>
       </main>
     );

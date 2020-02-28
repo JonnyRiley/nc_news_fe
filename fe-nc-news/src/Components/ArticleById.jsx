@@ -22,12 +22,14 @@ class ArticleById extends Component {
           <h2 className="li_article_Id_topic">{article.topic}: Article</h2>
           <p className="li_article_Id_body">{article.body}</p>
           <VoteAdder
-            className="li_article_Id_votes"
+            className="button_votes"
             article_id={article.article_id}
             votes={article.votes}
           />
           <p className="li_article_Id_author">Author: {article.author}</p>
-          <p>Comments: {article.comment_count}</p>
+          <p className="li_article_Id_comments">
+            Comments: {article.comment_count}
+          </p>
 
           <p className="li_article_Id_createdAt">
             Published at: {article.created_at}

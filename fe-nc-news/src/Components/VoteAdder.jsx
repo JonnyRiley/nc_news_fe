@@ -1,24 +1,30 @@
 import React, { Component } from "react";
 import * as Api from "../Api";
-import ErrorPage from "../ErrorPage";
+import ErrorPage from "./ErrorPage";
 
 class VoteAdder extends Component {
   state = {
     voteDifference: 0,
-    err: null
+    err: null,
+    youVoted: "Vote here!"
   };
   render() {
     const { err } = this.state;
     {
       if (err) return ErrorPage(err);
     }
-    const { votes, comment_id } = this.props;
+    const { votes } = this.props;
 
+    const { voteDifference, youVoted } = this.state;
     return (
-      <main>
-        <button onClick={() => this.handleClick(1)}>VoteUp</button>
-        <p>Votes: {votes + this.state.voteDifference}</p>
-        <button onClick={() => this.handleClick(-1)}>VoteDown</button>
+      <main className="button_votes">
+        <button onClick={() => this.handleClick(1)}>👍</button>
+        <p>
+          Votes: {votes + voteDifference} <p className="youVoted">{youVoted}</p>
+        </p>
+        <button className="button_votes_0" onClick={() => this.handleClick(-1)}>
+          👎
+        </button>
       </main>
     );
   }
@@ -27,7 +33,8 @@ class VoteAdder extends Component {
     const { comment_id, article_id } = this.props;
     this.setState(currentState => {
       return {
-        voteDifference: currentState.voteDifference + inc_votes
+        voteDifference: currentState.voteDifference + inc_votes,
+        youVoted: "Thanks for voting"
       };
     });
     if (comment_id) {
