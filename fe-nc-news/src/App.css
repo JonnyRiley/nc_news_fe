@@ -1,21 +1,7 @@
-/* main {
-  border: 40%;
-  border-radius: 20%;
-  border-color: black;
-} */
 /* .mainApp {
   background-image: url("./Components/adobe-spark-post.png");
   min-height: 1000px;
   max-width: auto;
-} */
-/*  */
-/*root {
-  display: grid;
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 200px auto;
-  grid-template-areas:
-    "topLeft topRight"
-    "bottomLeft bottomRight";
 } */
 
 h1 {
