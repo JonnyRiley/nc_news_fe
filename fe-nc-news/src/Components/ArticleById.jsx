@@ -4,6 +4,7 @@ import IsLoading from "../Components/IsLoading";
 import { Link } from "@reach/router";
 import Toggle from "./Toggle";
 import CommentsByArticleId from "../Components/CommentsByArticleId";
+import ArticleVoteAdder from "../Components/ArticleVoteAdder";
 
 class ArticleById extends Component {
   state = {
@@ -16,16 +17,21 @@ class ArticleById extends Component {
     const { article } = this.state;
     return (
       <main className="article_Id_Tile">
-        <h1>{article.title}</h1>
+        <h1 className="articleIdH1">{article.title}</h1>
         <li className="li_article_Id_list">
-          <p>Body: {article.body}</p>
-          <p>Votes: {article.votes}</p>
-          <p>Topic: {article.topic}</p>
-          <p>Author: {article.author}</p>
-          <p>Published at: {article.created_at}</p>
-          <Link to={"comments"}>
-            <p>Comments: {article.comment_count}</p>
-          </Link>
+          <h2 className="li_article_Id_topic">{article.topic}: Article</h2>
+          <p className="li_article_Id_body">{article.body}</p>
+          <ArticleVoteAdder
+            className="li_article_Id_votes"
+            article_id={article.article_id}
+            votes={article.votes}
+          />
+          <p className="li_article_Id_author">Author: {article.author}</p>
+          <p>Comments: {article.comment_count}</p>
+
+          <p className="li_article_Id_createdAt">
+            Published at: {article.created_at}
+          </p>
         </li>
 
         <Toggle>

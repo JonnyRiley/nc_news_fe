@@ -64,3 +64,11 @@ export const deleteCommentById = comment_Id => {
   console.log(comment_Id, "handlingDELETE");
   return axios.delete(baseURL + `/comments/${comment_Id}`);
 };
+
+export const FetchUsers = username => {
+  console.log(username, "USERNAME");
+  return axios.get(baseURL + `/users/${username}`).then(res => {
+    console.log(res.data);
+    return res.data.user;
+  });
+};

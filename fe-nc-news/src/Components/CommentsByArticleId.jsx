@@ -15,19 +15,15 @@ class CommentsByArticleId extends Component {
   render() {
     if (this.state.isLoading) return IsLoading();
     const { comments } = this.state;
-    console.log(comments, "HEREEE");
+    const { username, article_id } = this.props;
     return (
       <div>
         <h1>Comments</h1>
-        {/* <li className="li_article_Id_list">
-          <p>Body: {article.body}</p>
-          <p>Votes: {article.votes}</p>
-          <p>Topic: {article.topic}</p>
-          <p>Author: {article.author}</p>
-          <p>Published at: {article.created_at}</p>
-          <p>Comments: {article.comment_count}</p>
-        </li> */}
-        <ItemAdder addItem={this.addItem} article_id={this.props.article_id} />
+        <ItemAdder
+          addItem={this.addItem}
+          article_id={article_id}
+          username={username}
+        />
         <main className="commentTile"></main>
         {comments.map(comment => {
           return (

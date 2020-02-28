@@ -13,7 +13,7 @@ const Nav = () => {
       <Link to="/topics">
         <button className="navTopics">Topics</button>
       </Link>
-      <Link to="/users">
+      <Link to="/users/jessjelly">
         <button className="navUser">Users</button>
       </Link>
     </nav>
