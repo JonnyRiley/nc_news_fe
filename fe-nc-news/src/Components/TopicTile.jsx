@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
+import Articles from "./Articles";
 class TopicTile extends Component {
   state = {
     topics: [],
@@ -16,17 +17,18 @@ class TopicTile extends Component {
         <h1>Topics</h1>
         <main>
           <label htmlFor="sortBy">Select Topic</label>
-          <select onClick={this.props.getEachTopic}>
+          <select onChange={this.props.getEachTopic}>
             <option value="coding">Coding</option>
             <option value="football">Football</option>
             <option value="cooking">Cooking</option>
           </select>
         </main>
-        {topics.map(topic => (
+        {/* {topics.map(topic => (
           <ul key={topic.slug} className="li_topic_list">
-            <li>{topic.slug}</li>
+          <li>{topic.slug}</li>
           </ul>
-        ))}
+        ))} */}
+        <main></main>
       </aside>
     );
   }

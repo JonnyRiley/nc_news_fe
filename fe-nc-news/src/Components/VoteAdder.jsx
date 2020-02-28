@@ -24,22 +24,32 @@ class VoteAdder extends Component {
   }
 
   handleClick = inc_votes => {
-    const { comment_id } = this.props;
+    const { comment_id, article_id } = this.props;
     this.setState(currentState => {
       return {
         voteDifference: currentState.voteDifference + inc_votes
       };
     });
-
-    Api.patchVotes(inc_votes, comment_id).catch(err => {
-      this.setState(currentState => {
-        return {
-          voteDifference: currentState.voteDifference - inc_votes
-        };
+    if (comment_id) {
+      Api.patchVotes(inc_votes, comment_id).catch(err => {
+        this.setState(currentState => {
+          return {
+            voteDifference: currentState.voteDifference - inc_votes
+          };
+        });
       });
-    });
+    } else if (article_id) {
+      Api.patchArticleVotes(inc_votes, article_id).catch(err => {
+        this.setState(currentState => {
+          return {
+            voteDifference: currentState.voteDifference - inc_votes
+          };
+        });
+      });
+    }
   };
 }
+
 export default VoteAdder;
 
 // {err && <ErrorPage err={err}}/>

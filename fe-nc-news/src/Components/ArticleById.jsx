@@ -4,7 +4,7 @@ import IsLoading from "../Components/IsLoading";
 import { Link } from "@reach/router";
 import Toggle from "./Toggle";
 import CommentsByArticleId from "../Components/CommentsByArticleId";
-import ArticleVoteAdder from "../Components/ArticleVoteAdder";
+import VoteAdder from "../Components/VoteAdder";
 
 class ArticleById extends Component {
   state = {
@@ -21,7 +21,7 @@ class ArticleById extends Component {
         <li className="li_article_Id_list">
           <h2 className="li_article_Id_topic">{article.topic}: Article</h2>
           <p className="li_article_Id_body">{article.body}</p>
-          <ArticleVoteAdder
+          <VoteAdder
             className="li_article_Id_votes"
             article_id={article.article_id}
             votes={article.votes}
