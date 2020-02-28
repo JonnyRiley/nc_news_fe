@@ -11,7 +11,7 @@ class Users extends Component {
   };
   render() {
     const { err, isLoading, users } = this.state;
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
     if (isLoading) return IsLoading();
     return (
       <div>

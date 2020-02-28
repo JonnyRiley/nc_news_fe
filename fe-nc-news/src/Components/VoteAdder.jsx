@@ -10,7 +10,7 @@ class VoteAdder extends Component {
   };
   render() {
     const { err, voteDifference } = this.state;
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
     const { votes } = this.props;
     return (
       <main className="button_votes">

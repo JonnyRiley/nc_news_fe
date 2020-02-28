@@ -8,7 +8,7 @@ class DeleteComment extends Component {
   };
   render() {
     const { err } = this.state;
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
     return (
       <div className="deleteButton">
         <button onClick={this.handleDelete}> Delete Comment!</button>

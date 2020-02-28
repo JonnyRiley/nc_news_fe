@@ -14,7 +14,7 @@ class ArticleById extends Component {
   };
   render() {
     const { article, err, isLoading } = this.state;
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
     if (isLoading) return IsLoading();
 
     return (

@@ -6,26 +6,23 @@ import ErrorPage from "./ErrorPage";
 class TopicTile extends Component {
   state = {
     topics: [],
-    isLoading: true,
     filterTopicsBy: null,
     sortBy: null,
     articles: []
   };
   render() {
-    const { err, isLoading } = this.state;
-    if (err) return <ErrorPage />;
-    if (isLoading) return IsLoading();
+    const { err } = this.state;
+    if (err) return <ErrorPage err={err} />;
     return (
       <aside className="TopicTile">
         <h1>Topics</h1>
         <main>
           <label htmlFor="selectTopic">Select Topic</label>
-          <select onChange={this.getEachTopic}>
+          <select onChange={this.props.getEachTopic}>
             <option value="coding">Coding</option>
             <option value="football">Football</option>
             <option value="cooking">Cooking</option>
           </select>
-          <Articles />
         </main>
         {/* {topics.map(topic => (
           <ul key={topic.slug} className="li_topic_list">
@@ -36,24 +33,24 @@ class TopicTile extends Component {
       </aside>
     );
   }
-  getEachTopic = event => {
-    const { target } = event;
-    console.log(target.value, "TARGET");
-    return this.setState(currentState => {
-      return { filterTopicsBy: target.value };
-    });
-  };
-  componentDidMount() {
-    const { filterTopicsBy } = this.state;
-    console.log("mounting");
-    Api.FetchTopics(filterTopicsBy)
-      .catch(err => {
-        this.setState({ err });
-      })
-      .then(res => {
-        console.log(res);
-        this.setState({ topics: res, isLoading: false });
-      });
-  }
+  // getEachTopic = event => {
+  //   const { target } = event;
+  //   console.log(target.value, "TARGET");
+  //   return this.setState(currentState => {
+  //     return { filterTopicsBy: target.value };
+  //   });
+  // };
+  // componentDidMount() {
+  //   const { filterTopicsBy } = this.state;
+  //   console.log("mounting");
+  //   Api.FetchTopics(filterTopicsBy)
+  //     .catch(err => {
+  //       this.setState({ err });
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //       this.setState({ topics: res, isLoading: false });
+  //     });
+  // }
 }
 export default TopicTile;

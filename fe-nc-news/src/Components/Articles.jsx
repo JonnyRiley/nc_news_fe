@@ -4,6 +4,8 @@ import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
 import SortBy from "./SortBy";
 import ErrorPage from "./ErrorPage";
+import TopicTile from "./TopicTile";
+import Toggle from "./Toggle";
 
 class Articles extends Component {
   state = {
@@ -16,14 +18,14 @@ class Articles extends Component {
   render() {
     const { err, isLoading } = this.state;
     if (isLoading) return IsLoading();
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
     const { articles, sortBy } = this.state;
     return (
       <div>
         <h1>Articles</h1>
-        {/* <Toggle>
+        <Toggle>
           <TopicTile getEachTopic={this.getEachTopic} />
-        </Toggle> */}
+        </Toggle>
         <SortBy
           handleChange={this.handleChange}
           articles={articles}
@@ -46,12 +48,12 @@ class Articles extends Component {
     });
   };
 
-  // getEachTopic = event => {
-  //   const { target } = event;
-  //   return this.setState(currentState => {
-  //     return { filterTopicsBy: target.value };
-  //   });
-  // };
+  getEachTopic = event => {
+    const { target } = event;
+    return this.setState(currentState => {
+      return { filterTopicsBy: target.value };
+    });
+  };
 
   componentDidMount() {
     console.log("mounting");
@@ -68,12 +70,20 @@ class Articles extends Component {
     console.log(this.props, "Props");
     const { sortBy, filterTopicsBy } = this.state;
     //console.log(sortBy !== prevState.sortBy, "StateUpdate");
-    if (sortBy !== prevState.sortBy)
+    if (
+      sortBy !== prevState.sortBy ||
+      filterTopicsBy !== prevState.filterTopicsBy
+    )
       Api.FetchArticles(sortBy, filterTopicsBy)
         .then(res => {
           console.log(res, "HERE");
           return this.setState(currentState => {
-            return { articles: res, sortBy: sortBy, isLoading: false };
+            return {
+              articles: res,
+              filterTopicsBy: filterTopicsBy,
+              sortBy: sortBy,
+              isLoading: false
+            };
           });
         })
         .catch(err => {

@@ -9,7 +9,7 @@ class ItemAdder extends Component {
   };
   render() {
     const { err } = this.state;
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
 
     console.log("rendering");
     return (

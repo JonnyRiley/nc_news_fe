@@ -15,7 +15,7 @@ class CommentsByArticleId extends Component {
   };
   render() {
     const { err, isLoading } = this.state;
-    if (err) return <ErrorPage />;
+    if (err) return <ErrorPage err={err} />;
     if (isLoading) return IsLoading();
     const { comments } = this.state;
     const { username, article_id } = this.props;
@@ -73,6 +73,7 @@ class CommentsByArticleId extends Component {
         this.setState({ comments: res, isLoading: false });
       })
       .catch(err => {
+        console.log(err, "err");
         this.setState({ err });
       });
   }
@@ -91,6 +92,7 @@ class CommentsByArticleId extends Component {
           this.setState({ article: res, isLoading: false });
         })
         .catch(err => {
+          console.log(err, "err");
           this.setState({ err });
         });
     }

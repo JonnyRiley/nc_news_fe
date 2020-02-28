@@ -17,6 +17,15 @@
     "topLeft topRight"
     "bottomLeft bottomRight";
 } */
+/* @media all and (max-width: 600px) and (min-width: 1600px) {
+  .articleTile {
+    z-index: 0;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+} */
 h1 {
   border-color: black;
   border-style: double;
@@ -26,7 +35,7 @@ div {
 }
 .articleTile {
   z-index: 0;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
