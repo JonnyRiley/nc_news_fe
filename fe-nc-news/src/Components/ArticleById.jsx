@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
-import { Link } from "@reach/router";
 import Toggle from "./Toggle";
 import CommentsByArticleId from "../Components/CommentsByArticleId";
 import VoteAdder from "../Components/VoteAdder";
+import ErrorPage from "./ErrorPage";
 
 class ArticleById extends Component {
   state = {
     article: [],
-    isLoading: true
+    isLoading: true,
+    err: null
   };
   render() {
-    if (this.state.isLoading) return IsLoading();
-    console.log(this.state, "STATE ID");
-    const { article } = this.state;
+    const { article, err, isLoading } = this.state;
+    if (err) return <ErrorPage />;
+    if (isLoading) return IsLoading();
+
     return (
       <main className="article_Id_Tile">
         <h1 className="articleIdH1">{article.title}</h1>
@@ -45,16 +47,24 @@ class ArticleById extends Component {
   componentDidMount() {
     const { article_id } = this.props;
 
-    Api.FetchArticleById(article_id).then(res => {
-      this.setState({ article: res, isLoading: false });
-    });
+    Api.FetchArticleById(article_id)
+      .then(res => {
+        this.setState({ article: res, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
   }
   componentDidUpdate(prevProps, prevState) {
     const { article_id } = this.props;
     if (article_id !== prevProps.article_id)
-      Api.FetchArticleById(article_id).then(res => {
-        this.setState({ article: res, isLoading: false });
-      });
+      Api.FetchArticleById(article_id)
+        .then(res => {
+          this.setState({ article: res, isLoading: false });
+        })
+        .catch(err => {
+          this.setState({ err });
+        });
   }
 }
 export default ArticleById;

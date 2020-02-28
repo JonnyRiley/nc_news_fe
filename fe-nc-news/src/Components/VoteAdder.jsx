@@ -9,19 +9,16 @@ class VoteAdder extends Component {
     youVoted: "Vote here!"
   };
   render() {
-    const { err } = this.state;
-    {
-      if (err) return ErrorPage(err);
-    }
+    const { err, voteDifference } = this.state;
+    if (err) return <ErrorPage />;
     const { votes } = this.props;
-
-    const { voteDifference, youVoted } = this.state;
     return (
       <main className="button_votes">
         <button onClick={() => this.handleClick(1)}>👍</button>
-        <p>
-          Votes: {votes + voteDifference} <p className="youVoted">{youVoted}</p>
-        </p>
+        <div>
+          <p>Votes: {votes + voteDifference}</p>
+          {/* <p>{youVoted}</p> */}
+        </div>
         <button className="button_votes_0" onClick={() => this.handleClick(-1)}>
           👎
         </button>
@@ -58,29 +55,3 @@ class VoteAdder extends Component {
 }
 
 export default VoteAdder;
-
-// {err && <ErrorPage err={err}}/>
-
-// }
-
-//, err: {data: {msg:"voting failed"}status: 500
-
-// <p> Votes: {votes}<p>
-// <button onClick={()=>handleClick(0)}>starDown</button>
-
-// {err && <ErrorPage err={err}}/>
-
-// const handleClick({votes}) => {
-// const updateVotes = voteChange => {
-// console.log(voteChange)
-// this.setState(()=> {
-// return {voteDifference: currentState.voteDifference + voteChange}
-// }
-// })
-// api.patchVotes(votesChange, comment_id).catch((err)=> {
-// this.setState(()=> {
-// return {voteDifference: currentState.voteDifference - starChange}
-// }
-// })
-// }
-// }

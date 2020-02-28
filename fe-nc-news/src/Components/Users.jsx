@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import IsLoading from "../Components/IsLoading";
 import * as Api from "../Api";
+import ErrorPage from "./ErrorPage";
 
 class Users extends Component {
   state = {
     users: [],
-    isLoading: true
+    isLoading: true,
+    err: null
   };
   render() {
-    console.log("RENDERING USERS");
-    const { users } = this.state;
-    if (this.state.isLoading) return IsLoading();
+    const { err, isLoading, users } = this.state;
+    if (err) return <ErrorPage />;
+    if (isLoading) return IsLoading();
     return (
       <div>
         <label htmlFor="username">Username:</label>
@@ -39,20 +41,28 @@ class Users extends Component {
   };
   componentDidMount() {
     const { username } = this.props;
-    Api.FetchUsers(username).then(res => {
-      console.log(res);
-      this.setState({ users: res, isLoading: false });
-    });
+    Api.FetchUsers(username)
+      .then(res => {
+        console.log(res);
+        this.setState({ users: res, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
   }
   componentDidUpdate(prevProps, prevState) {
     const { username } = this.state;
     if (username !== prevState.username)
-      Api.FetchUsers(username).then(res => {
-        console.log(res, "HERE");
-        return this.setState(currentState => {
-          return { users: res, isLoading: false };
+      Api.FetchUsers(username)
+        .then(res => {
+          console.log(res, "HERE");
+          return this.setState(currentState => {
+            return { users: res, isLoading: false };
+          });
+        })
+        .catch(err => {
+          this.setState({ err });
         });
-      });
   }
 }
 

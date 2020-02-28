@@ -4,16 +4,19 @@ import IsLoading from "../Components/IsLoading";
 import ItemAdder from "./ItemAdder";
 import VoteAdder from "./VoteAdder";
 import DeleteComment from "./DeleteComment";
-
+import ErrorPage from "./ErrorPage";
 class CommentsByArticleId extends Component {
   state = {
     comments: [],
     articles: [],
     isLoading: true,
-    sortBy: "created_at"
+    sortBy: "created_at",
+    err: null
   };
   render() {
-    if (this.state.isLoading) return IsLoading();
+    const { err, isLoading } = this.state;
+    if (err) return <ErrorPage />;
+    if (isLoading) return IsLoading();
     const { comments } = this.state;
     const { username, article_id } = this.props;
     return (
@@ -65,23 +68,31 @@ class CommentsByArticleId extends Component {
 
   componentDidMount() {
     const { article_id } = this.props;
-    Api.FetchCommentsByArticleId(article_id).then(res => {
-      this.setState({ comments: res, isLoading: false });
-    });
+    Api.FetchCommentsByArticleId(article_id)
+      .then(res => {
+        this.setState({ comments: res, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
   }
   componentDidUpdate(prevProps, prevState) {
     console.log("cdu");
     const { comments } = this.state;
-    const { article_id, votes, comment_id } = this.props;
+    const { article_id, votes } = this.props;
     if (
       article_id !== prevProps.article_id ||
       votes !== prevProps.votes ||
       comments !== prevState.comments
     ) {
-      Api.FetchArticleById(article_id).then(res => {
-        console.log(res, "RESSSS");
-        this.setState({ article: res, isLoading: false });
-      });
+      Api.FetchArticleById(article_id)
+        .then(res => {
+          console.log(res, "RESSSS");
+          this.setState({ article: res, isLoading: false });
+        })
+        .catch(err => {
+          this.setState({ err });
+        });
     }
     // else if (comments !== prevState.comments) {
 

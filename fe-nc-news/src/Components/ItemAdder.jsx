@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import * as Api from "../Api";
-
+import ErrorPage from "./ErrorPage";
 class ItemAdder extends Component {
   state = {
     username: "jessjelly",
-    body: ""
+    body: "",
+    err: null
   };
   render() {
+    const { err } = this.state;
+    if (err) return <ErrorPage />;
+
     console.log("rendering");
     return (
       <form onSubmit={this.handleSubmit}>
@@ -32,16 +36,20 @@ class ItemAdder extends Component {
     );
   }
   handleChange = (text, key) => {
-    this.setState({ [key]: text });
+    this.setState({ [key]: text, isLoading: false });
   };
   handleSubmit = e => {
     e.preventDefault();
     const { article_id } = this.props;
     const { username, body } = this.state;
-    Api.postAnItem(article_id, { username, body }).then(newlyPostedItem => {
-      console.log(newlyPostedItem, "NEWITEM");
-      this.props.addItem(newlyPostedItem);
-    });
+    Api.postAnItem(article_id, { username, body })
+      .catch(err => {
+        this.setState({ err });
+      })
+      .then(newlyPostedItem => {
+        console.log(newlyPostedItem, "NEWITEM");
+        this.props.addItem(newlyPostedItem);
+      });
   };
 }
 export default ItemAdder;

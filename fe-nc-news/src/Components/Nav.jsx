@@ -10,11 +10,11 @@ const Nav = () => {
       <Link to="/articles">
         <button className="navArticles">Articles</button>
       </Link>
-      <Link to="/topics">
-        <button className="navTopics">Topics</button>
-      </Link>
       <Link to="/users/jessjelly">
         <button className="navUser">Users</button>
+      </Link>
+      <Link to="/topics">
+        <button className="navTopics">Topics</button>
       </Link>
     </nav>
   );

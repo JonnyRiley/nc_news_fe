@@ -2,26 +2,30 @@ import React, { Component } from "react";
 import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
 import Articles from "./Articles";
+import ErrorPage from "./ErrorPage";
 class TopicTile extends Component {
   state = {
     topics: [],
     isLoading: true,
-    filterTopicsBy: null
+    filterTopicsBy: null,
+    sortBy: null,
+    articles: []
   };
   render() {
-    if (this.state.isLoading) return IsLoading();
-    console.log(this.props.articles, "TOPICS");
-    const { topics } = this.state;
+    const { err, isLoading } = this.state;
+    if (err) return <ErrorPage />;
+    if (isLoading) return IsLoading();
     return (
       <aside className="TopicTile">
         <h1>Topics</h1>
         <main>
-          <label htmlFor="sortBy">Select Topic</label>
-          <select onChange={this.props.getEachTopic}>
+          <label htmlFor="selectTopic">Select Topic</label>
+          <select onChange={this.getEachTopic}>
             <option value="coding">Coding</option>
             <option value="football">Football</option>
             <option value="cooking">Cooking</option>
           </select>
+          <Articles />
         </main>
         {/* {topics.map(topic => (
           <ul key={topic.slug} className="li_topic_list">
@@ -32,36 +36,24 @@ class TopicTile extends Component {
       </aside>
     );
   }
-
-  // getEachTopic = event => {
-  //   const { target } = event;
-  //   console.log(event.target.value);
-  //   return this.setState(currentState => {
-  //     return { filterTopicsBy: target.value };
-  //   });
-  // };
-
-  componentDidMount() {
-    console.log("mounting");
-    Api.FetchTopics().then(res => {
-      this.setState({ topics: res, isLoading: false });
+  getEachTopic = event => {
+    const { target } = event;
+    console.log(target.value, "TARGET");
+    return this.setState(currentState => {
+      return { filterTopicsBy: target.value };
     });
+  };
+  componentDidMount() {
+    const { filterTopicsBy } = this.state;
+    console.log("mounting");
+    Api.FetchTopics(filterTopicsBy)
+      .catch(err => {
+        this.setState({ err });
+      })
+      .then(res => {
+        console.log(res);
+        this.setState({ topics: res, isLoading: false });
+      });
   }
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(this.state, "state");
-  //   const { filterTopicsBy } = this.state;
-  //   //console.log(filterTopicsBy !== prevState.filterTopicsBy, "StateUpdate");
-  //   if (filterTopicsBy !== prevState.filterTopicsBy)
-  //     Api.FetchArticles(filterTopicsBy).then(res => {
-  //       console.log(res, "HERE");
-  //       return this.setState(currentState => {
-  //         return {
-  //           articles: res,
-  //           filterTopicsBy: filterTopicsBy,
-  //           isLoading: false
-  //         };
-  //       });
-  //     });
-  // }
 }
 export default TopicTile;

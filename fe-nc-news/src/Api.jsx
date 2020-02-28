@@ -3,6 +3,7 @@ import axios from "axios";
 const baseURL = "https://portfolio-nc-news.herokuapp.com/api";
 
 export const FetchArticles = (sortBy, filterTopicsBy) => {
+  console.log(filterTopicsBy, "FILTERing");
   return axios
     .get(baseURL + "/articles", {
       params: {
@@ -12,6 +13,9 @@ export const FetchArticles = (sortBy, filterTopicsBy) => {
     })
     .then(res => {
       return res.data.articles;
+    })
+    .catch(err => {
+      this.setState({ err });
     });
 };
 
