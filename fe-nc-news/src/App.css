@@ -37,7 +37,6 @@ div {
   grid-template-rows: 100px 50px 50px 50px 50px 50px 50px;
   grid-template-areas: "one" "two" "three" "four" "five" "six" "seven";
 }
-
 .li_article_title {
   grid-area: one;
 }
@@ -51,7 +50,6 @@ div {
 .li_article_title:hover {
   color: teal;
 }
-
 .li_article_readMore {
   background: teal;
   grid-area: four;
@@ -65,10 +63,6 @@ div {
 .li_article_created_at {
   grid-area: seven;
 }
-
-/* .li_article_list:hover {
-  background-color: rgba(106, 95, 95, 0.351);
-} */
 a {
   text-decoration: none;
 }
@@ -82,15 +76,6 @@ a {
 }
 
 .li_comment_list {
-  /* border: black;
-  border-radius: 10%;
-  margin: 20px auto;
-  background-color: grey;
-  width: 350px;
-  height: 350px;
-  justify-content: center;
-  list-style: none;
-  color: black; */
   border-radius: 10%;
   margin: 20px auto;
   background-color: lightgrey;
@@ -224,7 +209,6 @@ a {
   display: flex;
   flex-direction: row-reverse;
   padding-right: 80px;
-  /* margin-top: 5px; */
 }
 li {
   text-decoration: none;
@@ -238,14 +222,11 @@ li {
 }
 .usersGrid {
   display: flex;
-  flex-direction: row-reverse; /* grid-template-rows: 3fr;
-  grid-template-columns: 3fr 1fr 1fr 0.5fr;
-  grid-template-areas: "empty1  col1 col2 col3 ";
-  justify-content: right; */
+  flex-direction: row-reverse;
 }
 .usernames {
   grid-area: col2;
-  display: flex; /* justify-content: sp; */
+  display: flex;
   justify-content: right;
   font-size: medium;
   width: 140px;
@@ -261,26 +242,11 @@ li {
 }
 .li_user_list {
   grid-area: col1;
-  justify-content: space-between; /* display: flex;
-  justify-content: flex-end; */
+  justify-content: space-between;
 }
 .login_text {
   grid-area: filled;
 }
-/* main {
-  display: grid;
-  grid-template-areas: "content sidebar";
-  grid-template-rows: 1fr auto;
-  grid-template-columns: 1fr 20px;
-}
-.ArticlesDiv {
-  grid-area: content;
-} */
-/* .ul_topic_border {
-  border-color: black;
-  border-width: medium;
-  border-radius: 10%;
-} */
 .TopicTile {
   width: max-content;
   display: flex;
@@ -311,7 +277,11 @@ li {
   border-width: medium;
   border-radius: 20%;
 }
-
+.sortBy {
+  background-color: black;
+  color: white;
+  height: 25px;
+}
 .img_home_BNews {
   height: 450px;
   width: 800px;
@@ -323,6 +293,18 @@ li {
 }
 .toggle {
   position: relative;
+}
+.toggleButton {
+  height: 25px;
+  border-radius: 10%;
+  background-color: black;
+  color: white;
+}
+.postButton {
+  height: 25px;
+  border-radius: 10%;
+  background-color: black;
+  color: white;
 }
 @media only screen and(max-width:600px) {
   .articleIdH1 {

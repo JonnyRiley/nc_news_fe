@@ -10,7 +10,9 @@ class Toggle extends Component {
     const { children } = this.props;
     return (
       <main className="toggle">
-        <button onClick={this.toggleFunction}>{displayText}</button>
+        <button className="toggleButton" onClick={this.toggleFunction}>
+          {displayText}
+        </button>
         {isShowing && <div>{children}</div>}
       </main>
     );

@@ -16,10 +16,11 @@ class ItemAdder extends Component {
         <input
           type="text"
           id="body"
+          size="80"
           required
           onChange={e => this.handleChange(e.target.value, "body")}
         />
-        <button>Post Comment</button>
+        <button className="postButton">Post Comment</button>
       </form>
     );
   }
