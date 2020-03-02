@@ -15,7 +15,6 @@ class App extends Component {
   };
   render() {
     const { username } = this.state;
-    console.log(this.state);
     return (
       <main className="mainApp">
         <Header />
@@ -47,7 +46,6 @@ class App extends Component {
   componentDidMount() {
     const { username } = this.state;
     Api.FetchUsers(username).then(res => {
-      console.log(res, "mounting");
       this.setState({ username: res.username, isLoading: false });
     });
   }
