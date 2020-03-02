@@ -25,31 +25,37 @@ class CommentsByArticleId extends Component {
           article_id={article_id}
           username={username}
         />
-        <main className="commentTile"></main>
-        {comments.map(comment => {
-          return (
-            <main key={comment.comment_id} className="li_comment_list">
-              <h2> {comment.author} comment about this article</h2>
-              <li>
-                <p>{comment.body}</p>
-                <p>Published at: {comment.created_at}</p>
-              </li>
-              <VoteAdder
-                comment_id={comment.comment_id}
-                votes={comment.votes}
-              />
-              {username === comment.author ? (
-                <div className="deleteButton">
-                  <button onClick={() => this.handleDelete(comment.comment_id)}>
-                    Delete Comment!
-                  </button>
-                </div>
-              ) : (
-                <p></p>
-              )}
-            </main>
-          );
-        })}
+        <div className="commentTile">
+          {comments.map(comment => {
+            return (
+              <main key={comment.comment_id} className="li_comment_list">
+                <h2> {comment.author} comment about this article</h2>
+                <li>
+                  <p className="li_comment_body">{comment.body}</p>
+                  <p className="li_comment_published">
+                    Published at: {comment.created_at}
+                  </p>
+                </li>
+                <VoteAdder
+                  comment_id={comment.comment_id}
+                  votes={comment.votes}
+                />
+                {username === comment.author ? (
+                  <div>
+                    <button
+                      className="deleteButton"
+                      onClick={() => this.handleDelete(comment.comment_id)}
+                    >
+                      Delete Comment!
+                    </button>
+                  </div>
+                ) : (
+                  <p></p>
+                )}
+              </main>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -12,14 +12,14 @@ class ItemAdder extends Component {
     if (err) return <ErrorPage err={err} />;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label htmlFor="body">Body:</label>
+        <label htmlFor="body"></label>
         <input
           type="text"
           id="body"
           required
           onChange={e => this.handleChange(e.target.value, "body")}
         />
-        <button>Add Comment</button>
+        <button>Post Comment</button>
       </form>
     );
   }

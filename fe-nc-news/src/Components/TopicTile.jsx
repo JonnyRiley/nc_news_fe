@@ -4,7 +4,7 @@ function TopicTile(props) {
   const { handleChange } = props;
   return (
     <aside className="TopicTile">
-      <ul>
+      <ul className="ul_topic_border">
         <label className="topic_topics_button" htmlFor="selectTopic">
           Select Topic
         </label>

@@ -16,12 +16,13 @@ class Articles extends Component {
     err: null
   };
   render() {
+    console.log(this.state, this.props);
     const { username, handleChange } = this.props;
     const { err, isLoading, articles, sortBy } = this.state;
     if (isLoading) return IsLoading();
     if (err) return <ErrorPage err={err} />;
     return (
-      <div>
+      <div className="ArticlesDiv">
         <h1>Articles</h1>
         <Users username={username} handleChange={handleChange} />
         <TopicTile handleChange={this.handleChange} />
@@ -52,8 +53,14 @@ class Articles extends Component {
       });
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps, prevState) {
     const { sortBy, filterTopicsBy } = this.state;
+    console.log(sortBy !== prevState.sortBy, sortBy, prevState.sortBy);
+    console.log(
+      filterTopicsBy !== prevState.filterTopicsBy,
+      filterTopicsBy,
+      prevState.filterTopicsBy
+    );
     if (
       sortBy !== prevState.sortBy ||
       filterTopicsBy !== prevState.filterTopicsBy

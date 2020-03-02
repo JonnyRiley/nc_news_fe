@@ -13,9 +13,7 @@ class Users extends Component {
     if (err) return <ErrorPage err={err} />;
     return (
       <main className="usersGrid">
-        <label className="login_text" htmlFor="username">
-          Logged In as:
-        </label>
+        <label className="login_text" htmlFor="username"></label>
         <select
           onChange={e => handleChange(e.target.value, "username")}
           className="usernames"
