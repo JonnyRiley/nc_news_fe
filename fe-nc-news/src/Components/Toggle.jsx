@@ -5,10 +5,12 @@ class Toggle extends Component {
     isShowing: true
   };
   render() {
+    const { isShowing } = this.state;
+    const { children } = this.props;
     return (
       <main>
-        <button onClick={this.toggleFunction}>Toggle</button>
-        {this.state.isShowing && <div>{this.props.children}</div>}
+        <button onClick={this.toggleFunction}>See more comments!</button>
+        {isShowing && <div>{children}</div>}
       </main>
     );
   }

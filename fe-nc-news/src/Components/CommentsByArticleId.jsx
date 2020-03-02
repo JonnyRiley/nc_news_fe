@@ -3,7 +3,6 @@ import * as Api from "../Api";
 import IsLoading from "../Components/IsLoading";
 import ItemAdder from "./ItemAdder";
 import VoteAdder from "./VoteAdder";
-import DeleteComment from "./DeleteComment";
 import ErrorPage from "./ErrorPage";
 class CommentsByArticleId extends Component {
   state = {
@@ -14,11 +13,10 @@ class CommentsByArticleId extends Component {
     err: null
   };
   render() {
-    const { err, isLoading } = this.state;
+    const { err, isLoading, comments } = this.state;
+    const { username, article_id } = this.props;
     if (err) return <ErrorPage err={err} />;
     if (isLoading) return IsLoading();
-    const { comments } = this.state;
-    const { username, article_id } = this.props;
     return (
       <div>
         <h1>Comments</h1>
@@ -40,16 +38,31 @@ class CommentsByArticleId extends Component {
                 comment_id={comment.comment_id}
                 votes={comment.votes}
               />
-              <DeleteComment
-                removeComment={this.removeComment}
-                comment_id={comment.comment_id}
-              />
+              {username === comment.author ? (
+                <div className="deleteButton">
+                  <button onClick={() => this.handleDelete(comment.comment_id)}>
+                    Delete Comment!
+                  </button>
+                </div>
+              ) : (
+                <p></p>
+              )}
             </main>
           );
         })}
       </div>
     );
   }
+  handleDelete = comment_id => {
+    Api.deleteCommentById(comment_id)
+      .then(newlyDeleteComment => {
+        this.removeComment(comment_id);
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
+  };
+
   addItem = newItem => {
     this.setState(state => {
       return { comments: [newItem, ...state.comments] };

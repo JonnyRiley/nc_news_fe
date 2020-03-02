@@ -21,7 +21,7 @@ const ArticleTile = ({
       <Link to={`/articles/${article_id}`}>
         <button className="li_article_readMore">ReadMore</button>
       </Link>
-      <p className="li_article_created_at">Posted at: {created_at}</p>{" "}
+      <p className="li_article_created_at">Posted at: {created_at}</p>
     </li>
   );
 };

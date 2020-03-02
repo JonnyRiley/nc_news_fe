@@ -1,29 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 
-import ErrorPage from "./ErrorPage";
-class TopicTile extends Component {
-  state = {
-    topics: [],
-    filterTopicsBy: null,
-    sortBy: null,
-    articles: []
-  };
-  render() {
-    const { err } = this.state;
-    if (err) return <ErrorPage err={err} />;
-    return (
-      <aside className="TopicTile">
-        <h1>Topics</h1>
-        <main>
-          <label htmlFor="selectTopic">Select Topic</label>
-          <select onChange={this.props.getEachTopic}>
-            <option value="coding">Coding</option>
-            <option value="football">Football</option>
-            <option value="cooking">Cooking</option>
-          </select>
-        </main>
-      </aside>
-    );
-  }
+function TopicTile(props) {
+  const { handleChange } = props;
+  return (
+    <aside className="TopicTile">
+      <ul>
+        <label className="topic_topics_button" htmlFor="selectTopic">
+          Select Topic
+        </label>
+        <button
+          className="topic_coding_button"
+          value="coding"
+          onClick={e => handleChange(e.target.value, "filterTopicsBy")}
+        >
+          Coding
+        </button>
+        <button
+          className="topic_football_button"
+          value="football"
+          onClick={e => handleChange(e.target.value, "filterTopicsBy")}
+        >
+          Football
+        </button>
+        <button
+          className="topic_cooking_button"
+          onClick={e => handleChange(e.target.value, "filterTopicsBy")}
+        >
+          Cooking
+        </button>
+      </ul>
+    </aside>
+  );
 }
 export default TopicTile;

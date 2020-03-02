@@ -5,7 +5,7 @@ import IsLoading from "../Components/IsLoading";
 import SortBy from "./SortBy";
 import ErrorPage from "./ErrorPage";
 import TopicTile from "./TopicTile";
-import Toggle from "./Toggle";
+import Users from "./Users";
 
 class Articles extends Component {
   state = {
@@ -16,22 +16,20 @@ class Articles extends Component {
     err: null
   };
   render() {
-    const { err, isLoading } = this.state;
+    const { username, handleChange } = this.props;
+    const { err, isLoading, articles, sortBy } = this.state;
     if (isLoading) return IsLoading();
     if (err) return <ErrorPage err={err} />;
-    const { articles, sortBy } = this.state;
     return (
       <div>
         <h1>Articles</h1>
-        <Toggle>
-          <TopicTile getEachTopic={this.getEachTopic} />
-        </Toggle>
+        <Users username={username} handleChange={handleChange} />
+        <TopicTile handleChange={this.handleChange} />
         <SortBy
           handleChange={this.handleChange}
           articles={articles}
           sortBy={sortBy}
         />
-
         <main className="articleTile">
           {this.state.articles.map(article => (
             <ArticleTile key={article.article_id} {...article} />
@@ -40,18 +38,8 @@ class Articles extends Component {
       </div>
     );
   }
-  handleChange = event => {
-    const { target } = event;
-    return this.setState(currentState => {
-      return { sortBy: target.value };
-    });
-  };
-
-  getEachTopic = event => {
-    const { target } = event;
-    return this.setState(currentState => {
-      return { filterTopicsBy: target.value };
-    });
+  handleChange = (text, key) => {
+    this.setState({ [key]: text });
   };
 
   componentDidMount() {
@@ -64,7 +52,7 @@ class Articles extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevState) {
     const { sortBy, filterTopicsBy } = this.state;
     if (
       sortBy !== prevState.sortBy ||
@@ -72,13 +60,11 @@ class Articles extends Component {
     )
       Api.FetchArticles(sortBy, filterTopicsBy)
         .then(res => {
-          return this.setState(currentState => {
-            return {
-              articles: res,
-              filterTopicsBy: filterTopicsBy,
-              sortBy: sortBy,
-              isLoading: false
-            };
+          return this.setState({
+            articles: res,
+            filterTopicsBy: filterTopicsBy,
+            sortBy: sortBy,
+            isLoading: false
           });
         })
         .catch(err => {

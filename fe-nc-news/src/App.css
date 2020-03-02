@@ -85,25 +85,6 @@ a {
   color: black;
 }
 
-.TopicTile {
-  z-index: 0;
-  display: block;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.li_topic_list {
-  border: black;
-  border-radius: 10%;
-  margin: 20px auto;
-  background-color: whitesmoke;
-  width: 70px;
-  height: 30px;
-  justify-content: center;
-  list-style: none;
-  color: black;
-  padding-top: 20px;
-}
-
 .navBar {
   height: 40px;
   width: 100px;
@@ -196,12 +177,6 @@ a {
   /* margin-top: 5px; */
 }
 
-.li_user_name {
-  text-decoration: none;
-}
-.li_user_avatar {
-  text-decoration: none;
-}
 li {
   text-decoration: none;
 }
@@ -210,7 +185,71 @@ li {
   margin: 5px 5px 5px 5px;
   height: 100px;
 }
-
+.usersGrid {
+  display: grid;
+  grid-template-rows: 3fr;
+  grid-template-columns: 3fr 1fr 1fr 0.5fr;
+  grid-template-areas: "empty1  col1 col2 col3 ";
+  justify-content: right;
+}
+.usernames {
+  grid-area: col2;
+  display: flex;
+  /* justify-content: sp; */
+  justify-content: right;
+  font-size: medium;
+  width: 100px;
+  float: right;
+}
+.img_user_avatar {
+  height: 30px;
+  width: 30px;
+  justify-content: space-between;
+  grid-area: col3;
+}
+.li_user_list {
+  grid-area: col1;
+  justify-content: space-between;
+  /* display: flex;
+  justify-content: flex-end; */
+}
+.login_text {
+  grid-area: filled;
+}
+.TopicTile {
+  /* display: grid;
+  grid-template-rows: 2fr 2fr 2fr 2fr;
+  grid-template-columns: 4fr 2fr;
+  grid-template-areas: "topics coding football cooking" "start finish";*/
+  width: 140px;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.topic_topics_button {
+  grid-area: topics start;
+}
+.topic_coding_button {
+  grid-area: coding start;
+}
+.topic_football_button {
+  grid-area: football finish;
+}
+.topic_cooking_button {
+  grid-area: cooking finish;
+}
+/* .li_topic_list {
+  border: black;
+  border-radius: 10%;
+  margin: 20px auto;
+  background-color: whitesmoke;
+  width: 70px;
+  height: 30px;
+  justify-content: center;
+  list-style: none;
+  color: black;
+  padding-top: 20px;
+} */
 @media only screen and(max-width:600px) {
   .articleIdH1 {
     padding: 0px;

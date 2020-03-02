@@ -6,20 +6,27 @@ class VoteAdder extends Component {
   state = {
     voteDifference: 0,
     err: null,
-    youVoted: "Vote here!"
+    youVoted: "Vote here!",
+    disabled: false
   };
   render() {
-    const { err, voteDifference } = this.state;
-    if (err) return <ErrorPage err={err} />;
+    const { err, voteDifference, disabled, youVoted } = this.state;
     const { votes } = this.props;
+    const { handleClick } = this;
+    if (err) return <ErrorPage err={err} />;
     return (
-      <main className="button_votes">
-        <button onClick={() => this.handleClick(1)}>👍</button>
+      <main className="button_votes" id="myButton">
+        <button disabled={disabled} onClick={() => handleClick(1)}>
+          👍
+        </button>
         <div>
-          <p>Votes: {votes + voteDifference}</p>
-          {/* <p>{youVoted}</p> */}
+          <p>Votes: {(votes + voteDifference, youVoted)}</p>
         </div>
-        <button className="button_votes_0" onClick={() => this.handleClick(-1)}>
+        <button
+          disabled={disabled}
+          className="button_votes_0"
+          onClick={() => handleClick(-1)}
+        >
           👎
         </button>
       </main>
@@ -28,10 +35,12 @@ class VoteAdder extends Component {
 
   handleClick = inc_votes => {
     const { comment_id, article_id } = this.props;
+    const { disabled } = this.state;
     this.setState(currentState => {
       return {
         voteDifference: currentState.voteDifference + inc_votes,
-        youVoted: "Thanks for voting"
+        youVoted: "Thanks for voting",
+        disabled: !disabled
       };
     });
     if (comment_id) {
