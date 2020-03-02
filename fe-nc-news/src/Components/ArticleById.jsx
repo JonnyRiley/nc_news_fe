@@ -25,13 +25,14 @@ class ArticleById extends Component {
         <main className="article_Id_Tile">
           <h1 className="articleIdH1">{article.title}</h1>
           <li className="li_article_Id_list">
+            <h2 className="li_article_Id_author">{article.author}</h2>
             <p className="li_article_Id_body">{article.body}</p>
             <VoteAdder
               className="button_votes"
               article_id={article.article_id}
               votes={article.votes}
             />
-            <p className="li_article_Id_author">Author: {article.author}</p>
+
             <p className="li_article_Id_comments">
               Comments: {article.comment_count}
             </p>

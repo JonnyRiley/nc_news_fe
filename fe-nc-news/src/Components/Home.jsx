@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Articles from "../Components/Articles";
-
+import BreakingNews from "./breaking-news.png";
+import { Link } from "@reach/router";
 class Home extends Component {
   state = {
     topics: []
@@ -8,7 +8,14 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Articles />
+        <h1>Breaking News!</h1>
+        <Link to="/articles">
+          <img
+            className="img_home_BNews"
+            src={BreakingNews}
+            alt="breakingNews"
+          ></img>
+        </Link>
       </div>
     );
   }

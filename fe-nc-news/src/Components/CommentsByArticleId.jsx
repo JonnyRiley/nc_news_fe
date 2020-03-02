@@ -29,13 +29,14 @@ class CommentsByArticleId extends Component {
           {comments.map(comment => {
             return (
               <main key={comment.comment_id} className="li_comment_list">
-                <h2> {comment.author} comment about this article</h2>
-                <li>
-                  <p className="li_comment_body">{comment.body}</p>
-                  <p className="li_comment_published">
-                    Published at: {comment.created_at}
-                  </p>
-                </li>
+                <h2 className="li_comment_author">
+                  {comment.author} comment about this article
+                </h2>
+                <p className="li_comment_body">{comment.body}</p>
+                <p className="li_comment_published">
+                  Published at: {comment.created_at}
+                </p>
+
                 <VoteAdder
                   comment_id={comment.comment_id}
                   votes={comment.votes}

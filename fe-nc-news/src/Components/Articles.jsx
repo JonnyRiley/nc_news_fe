@@ -16,7 +16,6 @@ class Articles extends Component {
     err: null
   };
   render() {
-    console.log(this.state, this.props);
     const { username, handleChange } = this.props;
     const { err, isLoading, articles, sortBy } = this.state;
     if (isLoading) return IsLoading();
@@ -55,12 +54,6 @@ class Articles extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { sortBy, filterTopicsBy } = this.state;
-    console.log(sortBy !== prevState.sortBy, sortBy, prevState.sortBy);
-    console.log(
-      filterTopicsBy !== prevState.filterTopicsBy,
-      filterTopicsBy,
-      prevState.filterTopicsBy
-    );
     if (
       sortBy !== prevState.sortBy ||
       filterTopicsBy !== prevState.filterTopicsBy

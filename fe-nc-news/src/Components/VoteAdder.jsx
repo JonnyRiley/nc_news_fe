@@ -17,7 +17,9 @@ class VoteAdder extends Component {
     return (
       <main className="button_votes" id="myButton">
         <button disabled={disabled} onClick={() => handleClick(1)}>
-          <span>👍</span>
+          <span role="img" aria-label="thumbs up">
+            👍
+          </span>
         </button>
         <div>
           <p>Votes: {votes + voteDifference}</p>
@@ -27,7 +29,9 @@ class VoteAdder extends Component {
           className="button_votes_0"
           onClick={() => handleClick(-1)}
         >
-          <span>👎</span>
+          <span role="img" aria-label="thumbs down">
+            👎
+          </span>
         </button>
       </main>
     );
