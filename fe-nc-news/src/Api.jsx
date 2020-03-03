@@ -51,6 +51,7 @@ export const patchVotes = (inc_votes, comment_id) => {
 };
 
 export const patchArticleVotes = (inc_votes, article_id) => {
+  console.log(inc_votes, article_id);
   return axios.patch(baseURL + `/articles/${article_id}`, {
     inc_votes: inc_votes
   });

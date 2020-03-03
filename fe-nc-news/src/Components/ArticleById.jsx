@@ -37,7 +37,11 @@ class ArticleById extends Component {
               Comments: {article.comment_count}
             </p>
             <p className="li_article_Id_createdAt">
-              Published at: {article.created_at}
+              Published at: {new Date(article.created_at).getDate()}
+              {"-"}
+              {new Date(article.created_at).getMonth()}
+              {"-"}
+              {new Date(article.created_at).getFullYear()}
             </p>
           </li>
           <Toggle>

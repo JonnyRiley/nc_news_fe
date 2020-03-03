@@ -16,12 +16,18 @@ const ArticleTile = ({
       <h2 className="li_article_title">Title: {title}</h2>
       <p className="li_article_author">Author: {author}</p>
       <p className="li_article_topic">Topic: {topic}</p>
-      <VoteAdder comment_id={article_id} votes={votes} />
+      <VoteAdder article_id={article_id} votes={votes} />
       <p className="li_article_comments">Comments: {comment_count}</p>
       <Link to={`/articles/${article_id}`}>
         <button className="li_article_readMore">ReadMore</button>
       </Link>
-      <p className="li_article_created_at">Posted at: {created_at}</p>
+      <p className="li_article_created_at">
+        Posted at: {new Date(created_at).getDate()}
+        {"-"}
+        {new Date(created_at).getMonth()}
+        {"-"}
+        {new Date(created_at).getFullYear()}
+      </p>
     </li>
   );
 };

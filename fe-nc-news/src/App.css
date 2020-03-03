@@ -85,7 +85,7 @@ a {
   list-style: none;
   color: black;
   display: grid;
-  grid-template-rows: 100px 130px 50px 50px 50px;
+  grid-template-rows: 100px 160px 50px 50px 50px;
   grid-template-areas: "one" "two" "three" "four" "five";
 }
 .li_comment_list:hover {
@@ -254,8 +254,9 @@ li {
   justify-content: flex-start;
   background-color: teal;
   border-color: black;
-  border-width: medium;
-  border-radius: 10%;
+  border-width: 0.5em;
+  /* border-radius: 30%; */
+  border-style: double;
 }
 .topic_topics_button {
   border-color: black;

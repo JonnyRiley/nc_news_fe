@@ -34,7 +34,11 @@ class CommentsByArticleId extends Component {
                 </h2>
                 <p className="li_comment_body">{comment.body}</p>
                 <p className="li_comment_published">
-                  Published at: {comment.created_at}
+                  Published at: {new Date(comment.created_at).getDate()}
+                  {"-"}
+                  {new Date(comment.created_at).getMonth()}
+                  {"-"}
+                  {new Date(comment.created_at).getFullYear()}
                 </p>
 
                 <VoteAdder

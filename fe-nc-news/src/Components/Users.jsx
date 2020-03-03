@@ -22,11 +22,12 @@ class Users extends Component {
           <option value="happyamy2016">happyamy2016</option>
           <option value="weegembump">weegembump</option>
           <option value="grumpy19">grumpy19</option>
+          <option value="cooljmessy">cooljmessy</option>
         </select>
         <img
           className="img_user_avatar"
           src={users.avatar_url}
-          alt="jessjelly-logo"
+          alt="avatar_logo"
         ></img>
       </main>
     );
